@@ -57,7 +57,7 @@ extension AudioPlayerExtension on AudioPlayer {
 
     // download to cache after setUrl in order to show the audio buffer state
     if (pushIfNotExisted) {
-      final key = getUrlSuffix(url);
+      final key = url.hashCode.toString();
       IoClient.download(url: url, path: dirPath + '/' + key).then((storedPath) {
         if (storedPath != null) {
           _sp!.setString(url, storedPath);
